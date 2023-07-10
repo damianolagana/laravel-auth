@@ -17,8 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth'])
+ 	->prefix('admin') //definisce il prefisso "admin/" per le rotte di questo gruppo
+ 	->namespace('Admin') //definisce il namespace per i Controller chiamati in questo gruppo (il DashboardController è nella cartella Admin)
+ 	->name('admin.') //definisce il pattern con cui generare i nomi delle rotte cioè "admin.qualcosa"
+ 	->group(function () {
+ 	
+ 		//Siamo nel gruppo quindi:
+ 		// - il percorso "/" diventa "admin/"
+ 		// - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
+ 		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+});
+
 
 require __DIR__.'/auth.php';
