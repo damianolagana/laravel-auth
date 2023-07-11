@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::middleware(['auth'])
  		// - il percorso "/" diventa "admin/"
  		// - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
  		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('posts', PostController::class);
 
 });
 
