@@ -17,9 +17,14 @@
                         <img class="w-75" src="{{$project->image}}" alt="">
                     </div>
                     <p class="pt-3 text-center">{{$project->content}}</p>
+                    <div class="text-center">
+                        <a href="{{route("admin.projects.show", $project)}}" class="btn btn-info text-center">View details</a>
+
+                    </div>
                 </div>
             @endforeach
         </div>
+
     </div>
 
 </div>
