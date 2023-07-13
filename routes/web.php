@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +29,7 @@ Route::middleware(['auth'])
  		// - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
  		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('posts', PostController::class);
+        Route::resource('projects', ProjectController::class);
 
 });
 
